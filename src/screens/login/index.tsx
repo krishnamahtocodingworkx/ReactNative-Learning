@@ -71,7 +71,7 @@ const LoginScreen = () => {
 
                     />
                 </View>
-                <Text style={authStyles.buttonText}>Forgot Password?</Text>
+                <Text style={authStyles.buttonText} onPress={() => navigation.navigate("ForgotPassword")}>Forgot Password?</Text>
 
                 {/* Submit Button */}
                 <AuthButton
@@ -131,7 +131,7 @@ export const authStyles = StyleSheet.create({
     },
     socialText: {
         fontSize: vw(12),
-        color: colors.greyInfoText,
+        color: colors.grey500,
         fontWeight: "500"
     },
     linkText: {

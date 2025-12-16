@@ -97,7 +97,7 @@ const SignupScreen = () => {
                         isPassword
                     />
                 </View>
-                <Text style={[authStyles.buttonText, { textAlign: "left", color: colors.greyInputText }]}>By clicking the <Text style={[authStyles.linkText, { textDecorationLine: "none" }]}>Register</Text> button, you agree to the public offer</Text>
+                <Text style={[authStyles.buttonText, { textAlign: "left", color: colors.grey500 }]}>By clicking the <Text style={[authStyles.linkText, { textDecorationLine: "none" }]}>Register</Text> button, you agree to the public offer</Text>
 
                 {/* Submit Button */}
                 <AuthButton

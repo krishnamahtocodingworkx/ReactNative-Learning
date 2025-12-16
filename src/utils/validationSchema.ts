@@ -39,3 +39,10 @@ export const SignupSchema = Yup.object().shape({
             "Password and Confirm Password must match"
         ),
 })
+
+export const ForgotPasswordSchema = Yup.object().shape({
+    email: Yup.string()
+        .trim()
+        .required("Enter the required field")
+        .matches(emailRegExp, "Please enter valid Email")
+})
