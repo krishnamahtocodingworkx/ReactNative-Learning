@@ -11,11 +11,9 @@ import SocialLoginButton from "../../components/common/SocialLoginButton";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import CustomView from "../../components/customView";
+import { AuthStackParamList } from "../../utils/model";
 
-type AuthStackParamList = {
-    Login: undefined;
-    Signup: undefined;
-};
+
 
 const LoginScreen = () => {
     const navigation = useNavigation<NativeStackNavigationProp<AuthStackParamList>>();;
@@ -38,8 +36,8 @@ const LoginScreen = () => {
 
     return (
         <CustomView>
-            <View style={loginStyles.container}>
-                <Text style={loginStyles.title}>Welcome Back!</Text>
+            <View style={authStyles.container}>
+                <Text style={authStyles.title}>Welcome Back!</Text>
 
                 <View style={{ gap: vw(30) }}>
 
@@ -49,7 +47,7 @@ const LoginScreen = () => {
                         onChangeText={loginForm.handleChange("email")}
                         onBlur={() => loginForm.handleBlur("email")}
                         placeholder="Email"
-                        startIcon={Images.user}
+                        startIcon={Images.email}
                         error={
                             !!loginForm.touched.email &&
                             !!loginForm.errors.email
@@ -73,7 +71,7 @@ const LoginScreen = () => {
 
                     />
                 </View>
-                <Text style={loginStyles.buttonText}>Forgot Password?</Text>
+                <Text style={authStyles.buttonText}>Forgot Password?</Text>
 
                 {/* Submit Button */}
                 <AuthButton
@@ -82,15 +80,15 @@ const LoginScreen = () => {
                     isLoading={loading}
                 />
 
-                <View style={loginStyles.socialContainer}>
+                <View style={authStyles.socialContainer}>
 
-                    <Text style={loginStyles.socialText}>- OR Continue with -</Text>
+                    <Text style={authStyles.socialText}>- OR Continue with -</Text>
 
                     <View>
                         <SocialLoginButton />
                     </View>
 
-                    <Text style={loginStyles.socialText}>Create An Account <Text style={loginStyles.linkText}
+                    <Text style={authStyles.socialText}>Create An Account <Text style={authStyles.linkText}
                         onPress={() => navigation.navigate("Signup")}
                     >Sign Up</Text></Text>
                 </View>
@@ -103,17 +101,19 @@ const LoginScreen = () => {
 export default LoginScreen;
 
 
-export const loginStyles = StyleSheet.create({
+export const authStyles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: vw(30),
+
     },
     title: {
         fontSize: vw(36),
         lineHeight: vw(43),
-        fontWeight: "600",
+        // fontWeight: "600",
         color: colors.black,
-        marginVertical: vw(36)
+        marginVertical: vw(30),
+        fontFamily: "Montserrat-ExtraBold"
     },
     buttonText: {
         marginTop: vw(8),
