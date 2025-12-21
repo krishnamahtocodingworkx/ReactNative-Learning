@@ -1,7 +1,6 @@
 import { Text, View } from 'react-native'
 import React, { useState } from 'react'
 import CustomView from '../../../components/customView'
-import { authStyles } from '../../login'
 import { vw } from '../../../utils/dimensions'
 import CustomInput from '../../../components/common/CustomInput'
 import AuthButton from '../../../components/common/AuthButton'
@@ -11,6 +10,7 @@ import { AuthStackParamList } from '../../../utils/model'
 import { useFormik } from 'formik'
 import { ForgotPasswordSchema } from '../../../utils/validationSchema'
 import { Images } from '../../../utils/images'
+import { authStyles } from '../style'
 
 const ForgotPassword = () => {
     const navigation = useNavigation<NativeStackNavigationProp<AuthStackParamList>>();;
@@ -26,7 +26,6 @@ const ForgotPassword = () => {
             setLoading(false)
             helpers.resetForm();
             navigation.navigate("VerifyOtp")
-
         },
     });
     return (

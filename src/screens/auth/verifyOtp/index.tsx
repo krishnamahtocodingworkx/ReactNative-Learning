@@ -1,22 +1,22 @@
 import { Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { OtpInput } from "react-native-otp-entry";
-
 import CustomView from '../../../components/customView'
-import { authStyles } from '../../login';
 import { vw } from '../../../utils/dimensions';
 import AuthButton from '../../../components/common/AuthButton';
 import { colors } from '../../../styles/color';
+import { authStyles } from '../style';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { AuthStackParamList } from '../../../utils/model';
 
 const VerifyOtp = () => {
+    const navigation = useNavigation<NativeStackNavigationProp<AuthStackParamList>>();;
     const [otp, setOtp] = useState('');
     const [loading, setLoading] = useState(false);
     const submitHandler = () => {
         setLoading(true);
-        setTimeout(() => {
-            console.log("otp :", otp);
-            setLoading(prev => !prev)
-        }, 2000)
+        navigation.navigate("ResetPassword");
     }
     console.log("otp is :", otp);
     return (
@@ -69,7 +69,7 @@ const VerifyOtp = () => {
                     text="Submit"
                     onPress={submitHandler}
                     isLoading={loading}
-                    disabled={otp.length === 4}
+                    disabled={otp.length !== 4}
                 />
 
             </View>

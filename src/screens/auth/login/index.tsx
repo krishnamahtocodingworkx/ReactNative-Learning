@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import CustomInput from "../../components/common/CustomInput";
-import { vw } from "../../utils/dimensions";
-import { colors } from "../../styles/color";
+import { Text, View } from "react-native";
 import { useFormik } from "formik";
-import { LoginSchema } from "../../utils/validationSchema";
-import { Images } from "../../utils/images";
-import AuthButton from "../../components/common/AuthButton";
-import SocialLoginButton from "../../components/common/SocialLoginButton";
+import { authStyles } from "../style";
 import { useNavigation } from "@react-navigation/native";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import CustomView from "../../components/customView";
-import { AuthStackParamList } from "../../utils/model";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { AuthStackParamList } from "../../../utils/model";
+import { LoginSchema } from "../../../utils/validationSchema";
+import CustomView from "../../../components/customView";
+import { vw } from "../../../utils/dimensions";
+import CustomInput from "../../../components/common/CustomInput";
+import { Images } from "../../../utils/images";
+import AuthButton from "../../../components/common/AuthButton";
+import SocialLoginButton from "../../../components/common/SocialLoginButton";
 
 
 
@@ -101,42 +101,3 @@ const LoginScreen = () => {
 export default LoginScreen;
 
 
-export const authStyles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingHorizontal: vw(30),
-
-    },
-    title: {
-        fontSize: vw(36),
-        lineHeight: vw(43),
-        // fontWeight: "600",
-        color: colors.black,
-        marginVertical: vw(30),
-        fontFamily: "Montserrat-ExtraBold"
-    },
-    buttonText: {
-        marginTop: vw(8),
-        color: colors.primary,
-        fontSize: vw(12),
-        fontWeight: "400",
-        textAlign: "right",
-        marginBottom: vw(50)
-    },
-    socialContainer: {
-        display: "flex",
-        alignItems: "center",
-        marginTop: vw(75),
-        gap: vw(20)
-    },
-    socialText: {
-        fontSize: vw(12),
-        color: colors.grey500,
-        fontWeight: "500"
-    },
-    linkText: {
-        color: colors.primary,
-        textDecorationLine: "underline"
-    }
-
-});

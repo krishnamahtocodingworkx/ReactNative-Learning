@@ -46,3 +46,19 @@ export const ForgotPasswordSchema = Yup.object().shape({
         .required("Enter the required field")
         .matches(emailRegExp, "Please enter valid Email")
 })
+
+export const ResetPasswordSchema = Yup.object().shape({
+    password: Yup.string()
+        .trim()
+        .required("Enter the required field")
+        .max(16, "Password should be maximum of 16 characters")
+        .min(8, "Password should be minimum of 8 characters")
+        .matches(passRegExp, passwordError),
+    confirmPassword: Yup.string()
+        .trim()
+        .required("Enter the required field")
+        .oneOf(
+            [Yup.ref("password")],
+            "Password and Confirm Password must match"
+        ),
+})

@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
 
     disabledButton: {
-        backgroundColor: colors.greyText,
+        backgroundColor: colors.grey500,
     },
 
     buttonText: {
