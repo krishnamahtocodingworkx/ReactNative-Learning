@@ -2,7 +2,7 @@ import * as Yup from "yup";
 import { emailRegExp, passRegExp, passwordError } from "./validation";
 
 export const LoginSchema = Yup.object().shape({
-    email: Yup.string()
+    emailOrPhoneNumber: Yup.string()
         .trim()
         .required("Enter the required field")
         .matches(emailRegExp, "Please enter valid Email"),

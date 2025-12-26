@@ -12,15 +12,20 @@ import CustomInput from "../../../components/common/CustomInput";
 import { Images } from "../../../utils/images";
 import AuthButton from "../../../components/common/AuthButton";
 import SocialLoginButton from "../../../components/common/SocialLoginButton";
+import { useAppDispatch, useAppSelector } from "../../../store/store";
+import { login } from "../../../store/slices/auth/authSlice";
+import { Toast } from "toastify-react-native";
 
 
 
 const LoginScreen = () => {
-    const navigation = useNavigation<NativeStackNavigationProp<AuthStackParamList>>();;
+    const navigation = useNavigation<NativeStackNavigationProp<AuthStackParamList>>();
+    const dispatch = useAppDispatch();
+    const { } = useAppSelector((state) => state.auth);
     const [loading, setLoading] = useState(false);
     const loginForm = useFormik({
         initialValues: {
-            email: "",
+            emailOrPhoneNumber: "",
             password: "",
         },
         validationSchema: LoginSchema,
@@ -30,7 +35,14 @@ const LoginScreen = () => {
             setTimeout(() => {
                 setLoading(false)
                 helpers.resetForm();
-            }, 3000)
+                Toast.success("Login Successful!");
+                dispatch(login({
+                    email: values.emailOrPhoneNumber,
+                    name: "Demo User",
+                    token: "demo_token_123456"
+                }));
+            }, 2000)
+
         },
     });
 
@@ -41,18 +53,18 @@ const LoginScreen = () => {
 
                 <View style={{ gap: vw(30) }}>
 
-                    {/* Email Input */}
+                    {/* EmailOrPhoneNumber Input */}
                     <CustomInput
-                        value={loginForm.values.email}
-                        onChangeText={loginForm.handleChange("email")}
-                        onBlur={() => loginForm.handleBlur("email")}
-                        placeholder="Email"
+                        value={loginForm.values.emailOrPhoneNumber}
+                        onChangeText={loginForm.handleChange("emailOrPhoneNumber")}
+                        onBlur={() => loginForm.handleBlur("emailOrPhoneNumber")}
+                        placeholder="Email Or Phone number"
                         startIcon={Images.email}
                         error={
-                            !!loginForm.touched.email &&
-                            !!loginForm.errors.email
+                            !!loginForm.touched.emailOrPhoneNumber &&
+                            !!loginForm.errors.emailOrPhoneNumber
                         }
-                        errorText={loginForm.errors.email}
+                        errorText={loginForm.errors.emailOrPhoneNumber}
                     />
 
                     {/* Password Input */}

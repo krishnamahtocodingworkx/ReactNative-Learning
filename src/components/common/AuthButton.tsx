@@ -31,7 +31,7 @@ const AuthButton: React.FC<AuthButtonProps> = ({
                 pressed && !isDisabled && styles.pressed,
             ]}
             onPress={onPress}
-            disabled={isDisabled}
+            disabled={isDisabled || isLoading}
         >
             {isLoading ? (
                 <ActivityIndicator color={colors.white} />
